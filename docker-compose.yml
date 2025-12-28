@@ -1,0 +1,16 @@
+services:
+  nextjs-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    # Optional: mount only if you need dynamic public files (not recommended in prod)
+    # volumes:
+    #   - ./public:/app/public:ro
+    deploy:
+      replicas: 1
